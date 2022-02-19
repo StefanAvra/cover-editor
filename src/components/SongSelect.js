@@ -1,15 +1,18 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function SongSelect(props) {
-    const [selectedSong, setSelectedSong] = useState("a");
+    const [selectedSong, setSelectedSong] = useState(props.selectedSong);
+    useEffect(() => {
+        console.log(`song selected: ${props.selectedSong.value}`);
+    }, [props.selectedSong]);
 
     return (
         <select
             name="songs"
             value={selectedSong}
             onChange={(e) => {
+                props.handleChangeSong(e.target.value);
                 setSelectedSong(e.target.value);
-                props.handleChangeSong(selectedSong);
             }}
         >
             {props.options.map((opt) => (

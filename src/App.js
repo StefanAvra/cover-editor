@@ -9,7 +9,8 @@ function App() {
             <header className="App-header">
                 <h1>Cover Editor</h1>
                 <p>
-                    Lorem ipsum dolor ... uh I mean create your cover here bro
+                    Lorem ipsum dolor ... uh I mean create your cover art here
+                    bro
                 </p>
             </header>
             <Editor />
