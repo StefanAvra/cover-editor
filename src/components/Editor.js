@@ -1,14 +1,7 @@
 import styles from "./Editor.module.css";
-import { useState, useEffect, createElement, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import SongSelect from "./SongSelect";
 import RangeSlider from "./RangeSlider";
-import covers from "./covers/covers";
-
-//create your forceUpdate hook
-function useForceUpdate() {
-    const [value, setValue] = useState(0); // integer state
-    return () => setValue((value) => value + 1); // update the state to force render
-}
 
 export default function Editor() {
     const songOptions = [
@@ -17,7 +10,6 @@ export default function Editor() {
     ];
 
     const imageOptions = [];
-    const forceUpdate = useForceUpdate();
 
     const [selectedSong, setSelectedSong] = useState({
         value: "a",
@@ -25,42 +17,26 @@ export default function Editor() {
         image: "japan",
     });
 
-    const [imgSource, setImgSource] = useState();
-    // `/covers/${selectedSong.image}.jpeg`
-
     const canvasRef = useRef(null);
-    const imgRef = useRef(null);
+    const [coverImage, setCoverImage] = useState(null);
 
     useEffect(() => {
-        // const canvas = canvasRef.current;
-        // const ctx = canvas.getContext("2d");
-        // ctx = canvasRef.current.getContext("2d");
-    }, []);
-
-    useEffect(() => {
-        // setImgSource(`/covers/${selectedSong.image}.jpeg`);
-        setImgSource(covers.filter((img) => img.includes(selectedSong.image)));
-        console.log(
-            `imgSource is: ${imgSource} and set it to ${selectedSong.image} and ${covers}`
-        );
+        const image = new Image();
+        image.src = `/covers/${selectedSong.image}.jpeg`;
+        image.onload = () => setCoverImage(image);
     }, [selectedSong]);
 
     useEffect(() => {
-        // const image = createElement("img");
-        // image.src = imgSource;
-        // imgRef.onload = () => {
-        //     drawImageToCtx();
-        // };
-        drawImageToCtx();
-    }, [imgSource]);
+        if (coverImage && canvasRef) {
+            drawImageToCtx();
+        }
+    }, [coverImage, canvasRef]);
 
     function drawImageToCtx() {
-        forceUpdate();
-
         console.log(`drawing image to ctx`);
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
-        const imageToDraw = imgRef.current;
+        const imageToDraw = coverImage;
 
         ctx.drawImage(
             imageToDraw,
@@ -94,13 +70,6 @@ export default function Editor() {
                 className={styles.cover}
                 ref={canvasRef}
             ></canvas>
-            <img
-                className={styles.hidden}
-                src={imgSource}
-                alt="cover art"
-                ref={imgRef}
-                // onChange={}
-            />
             <div className={styles.settings}>
                 <SongSelect
                     selectedSong={selectedSong}
@@ -128,7 +97,3 @@ export default function Editor() {
         </div>
     );
 }
-
-const Image = (props) => (
-    <img className={styles.hidden} src={props.imgSource} alt="cover art" />
-);
