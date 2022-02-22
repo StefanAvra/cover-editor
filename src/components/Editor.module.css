@@ -23,3 +23,16 @@
 .hidden {
     display: none;
 }
+
+.coverLoading {
+    position: absolute;
+    width: 100vw;
+    max-width: 640px;
+    aspect-ratio: 1;
+    color: rgb(240, 225, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    font-weight: 900;
+}
