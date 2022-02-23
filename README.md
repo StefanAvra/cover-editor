@@ -4,12 +4,12 @@ Cover art editor protoype for a yet undisclosed project of a friend.
 
 features:
 
--   [ ] multiple songs, each song its own pre-selection of cover arts
--   [ ] mobile support
--   [ ] saturation
--   [ ] hue shift
--   [ ] contrast
--   [ ] download image
+-   [x] multiple songs, each song its own pre-selection of cover arts
+-   [x] mobile support
+-   [x] saturation
+-   [x] hue shift
+-   [x] contrast
+-   [x] download image
 
 bootstrapped with create-react-app
 
