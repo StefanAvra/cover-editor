@@ -34,7 +34,7 @@ export default function Editor() {
     useEffect(() => {
         setLoading(true);
         const image = new Image();
-        image.src = `/covers/${selectedSong.value}/${selectedCover}.jpeg`;
+        image.src = `${process.env.PUBLIC_URL}/covers/${selectedSong.value}/${selectedCover}.jpeg`;
         image.onload = () => {
             setCoverImage(image);
             setLoading(false);
