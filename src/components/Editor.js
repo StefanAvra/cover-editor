@@ -9,22 +9,25 @@ export default function Editor() {
         { value: "a", label: "Song A" },
         { value: "b", label: "Song B" },
     ];
-
     const imageOptions = {
         a: ["japan", "pexels-aleksandar-pasaric-2338113"],
         b: ["low_rider", "Car Being Wash by Man"],
     };
-
     const [selectedSong, setSelectedSong] = useState({
         value: "a",
         label: "Song A",
     });
-
     const [selectedCover, setSelectedCover] = useState(
         imageOptions[selectedSong.value][0]
     );
     const [coverImage, setCoverImage] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [imageSettings, setImageSettings] = useState({
+        saturation: 100,
+        hue: 0,
+        contrast: 100,
+        brightness: 100,
+    });
 
     const canvasRef = useRef(null);
 
@@ -46,6 +49,7 @@ export default function Editor() {
             const canvas = canvasRef.current;
             const ctx = canvas.getContext("2d");
             const imageToDraw = coverImage;
+            ctx.filter = `hue-rotate(${imageSettings.hue}deg) saturate(${imageSettings.saturation}%) contrast(${imageSettings.contrast}%) brightness(${imageSettings.brightness}%)`;
 
             ctx.drawImage(
                 imageToDraw,
@@ -59,7 +63,16 @@ export default function Editor() {
                 canvas.height
             );
         }
-    }, [coverImage, canvasRef, selectedCover, selectedSong]);
+    }, [coverImage, canvasRef, selectedCover, selectedSong, imageSettings]);
+
+    function resetSettings() {
+        setImageSettings({
+            saturation: 100,
+            hue: 0,
+            contrast: 100,
+            brightness: 100,
+        });
+    }
 
     function handleChangeSong(selectedSong) {
         setSelectedSong(
@@ -74,33 +87,10 @@ export default function Editor() {
     }
 
     function handleChangeSlider(e) {
-        console.log(e.target.value);
-        console.log(e.target.id);
-
-        if (e.target.id === "hue") {
-            rotateHue(e.target.value);
-        }
-    }
-
-    function rotateHue(angle) {
-        if (coverImage && canvasRef) {
-            const canvas = canvasRef.current;
-            const ctx = canvas.getContext("2d");
-            const imageToDraw = coverImage;
-            ctx.filter = `hue-rotate(${angle}deg)`;
-
-            ctx.drawImage(
-                imageToDraw,
-                0,
-                0,
-                imageToDraw.width,
-                imageToDraw.height,
-                0,
-                0,
-                canvas.width,
-                canvas.height
-            );
-        }
+        console.log(`${e.target.id}: ${e.target.value}`);
+        let newSettings = { ...imageSettings };
+        newSettings[e.target.id] = e.target.value;
+        setImageSettings(newSettings);
     }
 
     return (
@@ -124,21 +114,38 @@ export default function Editor() {
                 ></CoverSelect>
                 <RangeSlider
                     range={{ min: 0, max: 200 }}
-                    defaultValue={100}
+                    value={imageSettings.saturation}
                     handleChange={handleChangeSlider}
                     effect="saturation"
                 ></RangeSlider>
                 <RangeSlider
                     range={{ min: 0, max: 359 }}
-                    defaultValue={0.1}
+                    value={imageSettings.hue}
                     handleChange={handleChangeSlider}
                     effect="hue"
                 ></RangeSlider>
                 <RangeSlider
-                    range={{ min: 0, max: 100 }}
+                    range={{ min: 10, max: 200 }}
+                    value={imageSettings.contrast}
                     handleChange={handleChangeSlider}
                     effect="contrast"
                 ></RangeSlider>
+                <RangeSlider
+                    range={{ min: 10, max: 200 }}
+                    value={imageSettings.brightness}
+                    handleChange={handleChangeSlider}
+                    effect="brightness"
+                ></RangeSlider>
+                <button
+                    className={styles.button}
+                    type="button"
+                    onClick={resetSettings}
+                >
+                    🚮
+                </button>
+                <button className={styles.button} type="button">
+                    💾
+                </button>
             </div>
         </div>
     );

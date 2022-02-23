@@ -1,10 +1,4 @@
-import { useState } from "react";
-
 export default function RangeSlider(props) {
-    const [value, setValue] = useState(
-        props.defaultValue ? props.defaultValue : 50
-    );
-
     return (
         <div>
             <input
@@ -12,9 +6,8 @@ export default function RangeSlider(props) {
                 id={props.effect}
                 min={props.range.min}
                 max={props.range.max}
-                value={value}
+                value={props.value}
                 onChange={(e) => {
-                    setValue(e.target.value);
                     props.handleChange(e);
                 }}
             ></input>

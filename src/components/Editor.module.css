@@ -19,6 +19,9 @@
     justify-content: center;
     border: 1px dashed black;
 }
+.settings > * {
+    padding: 0.5em;
+}
 
 .hidden {
     display: none;
