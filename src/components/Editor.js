@@ -1,5 +1,5 @@
 import styles from "./Editor.module.css";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, createElement } from "react";
 import SongSelect from "./SongSelect";
 import RangeSlider from "./RangeSlider";
 import CoverSelect from "./CoverSelect";
@@ -74,6 +74,20 @@ export default function Editor() {
         });
     }
 
+    function saveImage() {
+        canvasRef.current.toBlob(
+            (blob) => {
+                const a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "cover.jpeg";
+                a.click();
+                a.remove();
+            },
+            "image/jpeg",
+            0.95
+        );
+    }
+
     function handleChangeSong(selectedSong) {
         setSelectedSong(
             songOptions.filter((option) => option.value === selectedSong)[0]
@@ -143,7 +157,11 @@ export default function Editor() {
                 >
                     🚮
                 </button>
-                <button className={styles.button} type="button">
+                <button
+                    className={styles.button}
+                    type="button"
+                    onClick={saveImage}
+                >
                     💾
                 </button>
             </div>
