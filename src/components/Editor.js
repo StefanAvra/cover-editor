@@ -1,5 +1,5 @@
 import styles from "./Editor.module.css";
-import { useState, useEffect, useRef, createElement } from "react";
+import { useState, useEffect, useRef } from "react";
 import SongSelect from "./SongSelect";
 import RangeSlider from "./RangeSlider";
 import CoverSelect from "./CoverSelect";
