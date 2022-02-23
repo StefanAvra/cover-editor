@@ -21,21 +21,28 @@
 }
 .settings > * {
     padding: 0.5em;
+    margin: 0.2em;
 }
 
 .hidden {
     display: none;
 }
 
+.canvasContainer {
+    position: relative;
+}
 .coverLoading {
     position: absolute;
-    width: 100vw;
-    max-width: 640px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     aspect-ratio: 1;
     color: rgb(240, 225, 255);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: larger;
+    font-size: xx-large;
     font-weight: 900;
+    border-radius: 5%;
 }

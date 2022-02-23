@@ -109,13 +109,15 @@ export default function Editor() {
 
     return (
         <div className={styles.Editor}>
-            <canvas
-                width={1000}
-                height={1000}
-                className={styles.cover}
-                ref={canvasRef}
-            ></canvas>
-            {loading && <div className={styles.coverLoading}>Loading</div>}
+            <div className={styles.canvasContainer}>
+                <canvas
+                    width={1000}
+                    height={1000}
+                    className={styles.cover}
+                    ref={canvasRef}
+                ></canvas>
+                {loading && <div className={styles.coverLoading}>Loading</div>}
+            </div>
             <div className={styles.settings}>
                 <SongSelect
                     selectedSong={selectedSong}
