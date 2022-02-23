@@ -1,12 +1,12 @@
 .Editor {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .cover {
     width: 100vw;
     max-width: 640px;
-    /* height: 100vw; */
     border: 1px solid black;
     border-radius: 5%;
 }
