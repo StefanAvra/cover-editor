@@ -111,8 +111,8 @@ export default function Editor() {
         <div className={styles.Editor}>
             <div className={styles.canvasContainer}>
                 <canvas
-                    width={1000}
-                    height={1000}
+                    width={1080}
+                    height={1080}
                     className={styles.cover}
                     ref={canvasRef}
                 ></canvas>
