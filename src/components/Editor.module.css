@@ -1,27 +1,30 @@
 .Editor {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    width: 100%;
+    max-width: 1300px;
+    justify-content: space-between;
+    gap: 1em;
 }
 
 .cover {
     width: 100vw;
-    max-width: 640px;
-    border: 1px solid black;
-    border-radius: 5%;
+    max-width: 574px;
+    border-radius: 9% 4%;
 }
 
 .settings {
-    padding: 1em;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    border: 1px dashed black;
+    justify-content: space-between;
 }
-.settings > * {
-    padding: 0.5em;
-    margin: 0.2em;
+.settings > :where(:not(:last-child)) {
+    margin-bottom: 1em;
+}
+
+.settingsSliders {
+    composes: settings;
+    order: 2;
 }
 
 .hidden {
@@ -29,8 +32,11 @@
 }
 
 .canvasContainer {
-    position: relative;
+    position: sticky;
+    top: 0;
+    max-height: 574px;
 }
+
 .coverLoading {
     position: absolute;
     top: 0;
@@ -45,4 +51,20 @@
     font-size: xx-large;
     font-weight: 900;
     border-radius: 5%;
+}
+
+.button {
+    text-align: left;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    font-size: var(--fs-1);
+    border-radius: 40px 20px;
+    padding-left: 0.6em;
+}
+
+@media (min-width: 600px) {
+    .canvasContainer {
+        order: 1;
+    }
 }

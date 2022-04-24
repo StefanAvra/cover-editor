@@ -1,20 +1,54 @@
 * {
     box-sizing: border-box;
 }
+
+:root {
+    --bg-color: #eecd9d;
+    --text-color: #433126;
+    /* --beige: #eecd9d;
+    --brown: #433126;
+    --pink: #ff0042;
+    --blue: #62bdcb;
+    --green: #82ff7f; */
+    --fs-1: 2rem; /* 50pt, really ?? ~67px??? */
+    --fs-big: 6.25rem;
+    --weird-border-radius: 75px 30px;
+}
+
+@font-face {
+    font-family: "Univers LT Std";
+    /* font-style: normal;
+    font-weight: 400; */
+    src: url("./fonts/UniversLTStd.otf");
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
 .App {
-    background-color: #fff9f1;
+    background-color: var(--bg-color);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--text-color);
+    font-family: "Univers LT Std";
 }
 
 .App-header {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    color: rgb(38, 0, 255);
+    /* align-items: center; */
+}
+.App-header h1 {
+    font-size: var(--fs-big);
+    font-weight: normal;
 }
 .App-header p {
-    padding: 1em;
+    font-size: var(--fs-1);
+}
+
+.fill-bg-color {
+    fill: var(--bg-color);
 }

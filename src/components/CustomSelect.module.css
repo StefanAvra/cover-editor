@@ -1,0 +1,42 @@
+.CustomSelect {
+    display: flex;
+    flex-direction: column;
+}
+
+.CustomSelect svg {
+    color: var(--bg-color);
+}
+
+.selectContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon {
+    position: absolute;
+    height: 2.2em;
+    /* right: 8px; */
+}
+
+.CustomSelect > label {
+    font-size: var(--fs-1);
+}
+
+.CustomSelect select {
+    line-height: 1.3em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    color: var(--bg-color);
+    font-size: var(--fs-1);
+    width: 9em;
+    height: 1.3em;
+    border-radius: var(--weird-border-radius);
+    padding-left: 0.8em;
+    padding-right: 1.5em;
+    background-color: var(--text-color);
+    background-position: calc(100% - 8px);
+    background-size: 1.1em;
+    background-repeat: no-repeat;
+}

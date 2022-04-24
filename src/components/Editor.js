@@ -6,12 +6,17 @@ import CoverSelect from "./CoverSelect";
 
 export default function Editor() {
     const songOptions = [
-        { value: "a", label: "Song A" },
-        { value: "b", label: "Song B" },
+        { value: "a", label: "Goldberg City Stories" },
+        { value: "b", label: "Tokyo" },
     ];
     const imageOptions = {
-        a: ["japan", "pexels-aleksandar-pasaric-2338113"],
-        b: ["low_rider", "Car Being Wash by Man"],
+        a: [
+            "Goldberg City Stories 1",
+            "Goldberg City Stories 2",
+            "Goldberg City Stories 3",
+            "Goldberg City Stories 4",
+        ],
+        b: ["Tokyo 1", "Tokyo 2", "Tokyo 3", "Tokyo 4", "Tokyo 5"],
     };
     const [selectedSong, setSelectedSong] = useState({
         value: "a",
@@ -34,7 +39,7 @@ export default function Editor() {
     useEffect(() => {
         setLoading(true);
         const image = new Image();
-        image.src = `${process.env.PUBLIC_URL}/covers/${selectedSong.value}/${selectedCover}.jpeg`;
+        image.src = `${process.env.PUBLIC_URL}/covers/${selectedSong.value}/${selectedCover}.jpg`;
         image.onload = () => {
             setCoverImage(image);
             setLoading(false);
@@ -128,6 +133,22 @@ export default function Editor() {
                     options={imageOptions[selectedSong.value]}
                     handleChange={handleChangeCover}
                 ></CoverSelect>
+                <button
+                    className={styles.button}
+                    type="button"
+                    onClick={resetSettings}
+                >
+                    Reset
+                </button>
+                <button
+                    className={styles.button}
+                    type="button"
+                    onClick={saveImage}
+                >
+                    Download
+                </button>
+            </div>
+            <div className={styles.settingsSliders}>
                 <RangeSlider
                     range={{ min: 0, max: 200 }}
                     value={imageSettings.saturation}
@@ -152,20 +173,6 @@ export default function Editor() {
                     handleChange={handleChangeSlider}
                     effect="brightness"
                 ></RangeSlider>
-                <button
-                    className={styles.button}
-                    type="button"
-                    onClick={resetSettings}
-                >
-                    🚮
-                </button>
-                <button
-                    className={styles.button}
-                    type="button"
-                    onClick={saveImage}
-                >
-                    💾
-                </button>
             </div>
         </div>
     );
