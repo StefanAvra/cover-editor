@@ -29,7 +29,6 @@ export default function CoverSelect(props) {
 
     return (
         <div className={styles.CustomSelect}>
-            {/* {iconSvg} */}
             <label htmlFor="cover images">Motive</label>
             <div className={styles.selectContainer}>
                 <select
