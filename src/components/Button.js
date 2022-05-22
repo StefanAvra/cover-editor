@@ -29,7 +29,13 @@ export default function Button({ onClick, iconSvg, name }) {
     // );
     return (
         <div className={styles.buttonContainer}>
-            <button className={styles.button} type="button" onClick={onClick}>
+            <label htmlFor={name}>{name}</label>
+            <button
+                className={styles.button}
+                name={name}
+                type="button"
+                onClick={onClick}
+            >
                 {name}
                 {iconSvg}
             </button>

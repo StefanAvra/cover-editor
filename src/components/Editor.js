@@ -125,7 +125,8 @@ export default function Editor() {
                 ),
                 height: "1em",
                 position: "absolute",
-                right: "8px",
+                bottom: "5px",
+                right: "7px",
                 pointerEvents: "none",
             }}
         >
@@ -152,7 +153,8 @@ export default function Editor() {
                 ),
                 height: "1em",
                 position: "absolute",
-                right: "8px",
+                bottom: "5px",
+                right: "7px",
                 pointerEvents: "none",
             }}
         >
