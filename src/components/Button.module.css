@@ -1,0 +1,18 @@
+.buttonContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.button {
+    text-align: left;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    font-size: var(--fs-1);
+    border-radius: 40px 20px;
+    padding-left: 0.6em;
+    height: 1.3em;
+}
