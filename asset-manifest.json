@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/cover-editor/static/css/main.6f1b598b.css",
-    "main.js": "/cover-editor/static/js/main.6c2e6b67.js",
+    "main.js": "/cover-editor/static/js/main.5c7e4869.js",
     "static/js/787.2d021f2c.chunk.js": "/cover-editor/static/js/787.2d021f2c.chunk.js",
     "static/media/UniversLTStd.otf": "/cover-editor/static/media/UniversLTStd.5e1f132656185ec403eb.otf",
     "index.html": "/cover-editor/index.html",
     "main.6f1b598b.css.map": "/cover-editor/static/css/main.6f1b598b.css.map",
-    "main.6c2e6b67.js.map": "/cover-editor/static/js/main.6c2e6b67.js.map",
+    "main.5c7e4869.js.map": "/cover-editor/static/js/main.5c7e4869.js.map",
     "787.2d021f2c.chunk.js.map": "/cover-editor/static/js/787.2d021f2c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6f1b598b.css",
-    "static/js/main.6c2e6b67.js"
+    "static/js/main.5c7e4869.js"
   ]
 }
